@@ -83,7 +83,7 @@ function Create(name,url,i,resultData,text1) {
         }
         if(sec<=9)
             sec='0'+sec;
-        var time=Math.floor(min)+":"+sec;
+        var time=Math.floor(min)+":"+ parseInt(sec, 10);
         var t1 = document.createTextNode(time);       // Create a text node
         t.setAttribute('data',time+" - "+lines._source.word);
         t.id = i+"####"+lines._source.time;  

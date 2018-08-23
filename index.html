@@ -62,75 +62,76 @@ function Create(name,url,i,resultData,text1) {
     document.body.appendChild(leftDiv);
     document.getElementById("vd").appendChild(leftDiv);
     
-    var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
-    leftDiv.setAttribute("style","padding-bottom:10px;");
-    var t2 = document.createTextNode(" GO TO TIME :-");
-    document.getElementById("vd").appendChild(t2);
-    document.getElementById("vd").setAttribute("style","font-weight: bold;");
-    var div1= document.createElement("div");
-    var sub= document.createElement("p");
-         sub.id="sub"+i;
-         document.getElementById("vd").appendChild(sub); 
-    for(var j=0;j<len1;j++)
-    {
-        var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];     
-        var t = document.createElement("button");                         //Create button   
-        var sec=lines._source.time;
-        var min=00;
-        if(sec>=60){
-            min=sec/60;
-            sec=sec%60;
-        }
-        if(sec<=9)
-            sec='0'+sec;
-        var time=Math.floor(min)+":"+ parseInt(sec, 10);
-        var t1 = document.createTextNode(time);       // Create a text node
-        t.setAttribute('data',time+" - "+lines._source.word);
-        t.id = i+"####"+lines._source.time;  
-        t.appendChild(t1);                                             
-        t.addEventListener('click', function() {
-                 var v=this.id;
-                 var l=v.length;
-                 var frame_number="";
-                 var time="";
-                 var f=0;
-                   for(var i=0;i<l;i++){
-                       var ch=v[i];
-                       if(ch!='#' && f==0)
-                       frame_number+=ch;
-                       else if(ch=='#'){
-                           f=1;
-                           continue;
-                       }
-                        if(ch!='#' && f==1)
-                            time+=ch;
-                   }
-    document.getElementById("iframe"+frame_number).currentTime = time;
-  
-    var data1=this.getAttribute('data');  
-    var text2=text1;
-    var time1=data1.substring(0,5);
-    
-    text2="<span style='background-color:#e2f442;'>"+text2+"</span>";
-    time2="<span style='color:#272727;'>"+time1+"</span>";    
-    var re = new RegExp(text1, "ig");
-    data1=data1.replace(re,text2);  
-    data1=data1.replace(time1,time2); 
-    var text = document.createElement("p");
-    text.innerHTML = data1;
-    document.getElementById("iframe"+frame_number).play();
-    var t2 = document.createTextNode(text); 
-    document.getElementById("sub"+frame_number).innerHTML= "";
-    document.getElementById("sub"+frame_number).appendChild(text);    
-             }, false);
-        t.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
-          
-        div1.appendChild(t);
-        document.getElementById("vd").appendChild(div1);
-         var div2=document.createElement("div");
-       
-         document.getElementById("sub"+i).setAttribute("style", "color:#747474; font-size: 120%;");
-        
+    if (null != resultData.hits.hits[i].inner_hits) {
+      var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
+      leftDiv.setAttribute("style","padding-bottom:10px;");
+      var t2 = document.createTextNode(" GO TO TIME :-");
+      document.getElementById("vd").appendChild(t2);
+      document.getElementById("vd").setAttribute("style","font-weight: bold;");
+      var div1= document.createElement("div");
+      var sub= document.createElement("p");
+           sub.id="sub"+i;
+           document.getElementById("vd").appendChild(sub);
+      for(var j=0;j<len1;j++)
+      {
+          var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
+          var t = document.createElement("button");                         //Create button
+          var sec=lines._source.time;
+          var min=00;
+          if(sec>=60){
+              min=sec/60;
+              sec=sec%60;
+          }
+          if(sec<=9)
+              sec='0'+sec;
+          var time=Math.floor(min)+":"+ parseInt(sec, 10);
+          var t1 = document.createTextNode(time);       // Create a text node
+          t.setAttribute('data',time+" - "+lines._source.word);
+          t.id = i+"####"+lines._source.time;
+          t.appendChild(t1);
+          t.addEventListener('click', function() {
+                   var v=this.id;
+                   var l=v.length;
+                   var frame_number="";
+                   var time="";
+                   var f=0;
+                     for(var i=0;i<l;i++){
+                         var ch=v[i];
+                         if(ch!='#' && f==0)
+                         frame_number+=ch;
+                         else if(ch=='#'){
+                             f=1;
+                             continue;
+                         }
+                          if(ch!='#' && f==1)
+                              time+=ch;
+                     }
+      document.getElementById("iframe"+frame_number).currentTime = time;
+
+      var data1=this.getAttribute('data');
+      var text2=text1;
+      var time1=data1.substring(0,5);
+
+      text2="<span style='background-color:#e2f442;'>"+text2+"</span>";
+      time2="<span style='color:#272727;'>"+time1+"</span>";
+      var re = new RegExp(text1, "ig");
+      data1=data1.replace(re,text2);
+      data1=data1.replace(time1,time2);
+      var text = document.createElement("p");
+      text.innerHTML = data1;
+      document.getElementById("iframe"+frame_number).play();
+      var t2 = document.createTextNode(text);
+      document.getElementById("sub"+frame_number).innerHTML= "";
+      document.getElementById("sub"+frame_number).appendChild(text);
+               }, false);
+          t.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
+
+          div1.appendChild(t);
+          document.getElementById("vd").appendChild(div1);
+           var div2=document.createElement("div");
+
+           document.getElementById("sub"+i).setAttribute("style", "color:#747474; font-size: 120%;");
+      }
     }
 }
 

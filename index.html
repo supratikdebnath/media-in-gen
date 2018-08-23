@@ -5,18 +5,18 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-    <title>Home</title>
+    <title>Media InGen - Search</title>
      <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 <div style="padding-left:20px; padding-top: 5px; padding-bottom: 30px;  padding-right:20px; background-color: #6CBF4C;">
   <img src="images/hyland.png"  width="150" height="150" style="float: right;padding-left: 10px; padding-right: 20px; padding-top: 10px;padding-bottom: 20px;">
-  <div ><h1>Media In-Gen Search Site</h1>
-  <p>Search for a video with a particular word or phrases</p>
+  <div ><h1>Media InGen - Search</h1>
+  <p>Context based search for videos</p>
  
   </div>
 <div class="topnav">
-  <a class="active" href="index.html">Home</a>
+  <a class="active" href="index.html">Media InGen - Search</a>
   
   <div class="search-container">
       <input id="search" type="text" placeholder="Search.." name="search" oninput="search()">
@@ -31,9 +31,9 @@
     var para = document.createElement("P");
      var t;
      if(len==1)
-      t = document.createTextNode("Search Results found \""+len+"\" video");
+      t = document.createTextNode("Search term found in \""+len+"\" video");
      else
-      t = document.createTextNode("Search Results found \""+len+"\" videos");
+      t = document.createTextNode("Search term found in \""+len+"\" videos");
     // para.setAttribute("style","color:#eff913");
     para.appendChild(t);
     document.getElementById("heading").appendChild(para);
@@ -57,12 +57,12 @@ function Create(name,url,i,resultData,text1) {
     leftDiv.id = "left";                                           //Assign div id
     a = document.createElement('a');
     a.href = url;
-    a.innerHTML = "Download Video";                //<a>INNER_TEXT</a>
+    a.innerHTML = "Get Video";                //<a>INNER_TEXT</a>
     leftDiv.appendChild(a);  // Append the link to the div
     document.body.appendChild(leftDiv);
     document.getElementById("vd").appendChild(leftDiv);
     
-    var len1=resultData.hits.hits[i].inner_hits.subtitles.hits.hits.length;
+    var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
     leftDiv.setAttribute("style","padding-bottom:10px;");
     var t2 = document.createTextNode(" GO TO TIME :-");
     document.getElementById("vd").appendChild(t2);
@@ -73,7 +73,7 @@ function Create(name,url,i,resultData,text1) {
          document.getElementById("vd").appendChild(sub); 
     for(var j=0;j<len1;j++)
     {
-        var lines=resultData.hits.hits[i].inner_hits.subtitles.hits.hits[j];     
+        var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];     
         var t = document.createElement("button");                         //Create button   
         var sec=lines._source.time;
         var min=00;
@@ -180,20 +180,20 @@ function search() {
          },
          "query": {
                     "nested": {
-                    "path": "subtitles",
+                    "path": "subtitle",
                     "query": {
                              "match_phrase_prefix": { 
-                               "subtitles.word":text        
+                               "subtitle.word":text        
                                 }
                             },
                     "inner_hits": { 
                             "size": 15,
                             "highlight": {
                                     "fields": {
-                                        "subtitles.time": {}
+                                        "subtitle.time": {}
                                             }
                                          },
-                             "sort": {"subtitles.time" :{"order" :"asc"}}
+                             "sort": {"subtitle.time" :{"order" :"asc"}}
                                     }
                             }   
                     }

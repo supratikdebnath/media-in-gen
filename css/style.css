@@ -4,7 +4,7 @@ box-sizing: border-box;
 
 body {
   margin: 0;
-   font-family: Arial, Helvetica, sans-serif; 
+   font-family: Arial, Helvetica, sans-serif;
    background-color: #f1f9e8;
    background-size: 100% 700px;
    font-family: Allan;
@@ -97,16 +97,12 @@ min-height: 40px;
     }
 }
 
-img{
-    max-width:150px;
-    max-height:50px;
-}
-
 body {
-  background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+  /*background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);*/
   font: 13px 'Lucida sans', Arial, Helvetica;
   color: #eee;
   text-align: center;
+    background-color: #f5f5f5;
 }
 
 a {
@@ -135,7 +131,7 @@ a {
     padding-top: 5px;
     padding-bottom: 10px;
     padding-right:20px;
-    background-color: #0049a0;
+    background-color: #0f4b9e;
 }
 
 .row
@@ -151,6 +147,10 @@ a {
     margin-right: 12px;
     border-right: 1px solid white;
 }
+.columnLeft img{
+    max-width:150px;
+    max-height:50px;
+}
 
 .columnLeft {
     float: left;
@@ -160,9 +160,20 @@ a {
     vertical-align: middle;
 }
 
+.columnMiddle {
+    float: left;
+    width: 20%;
+    text-align: left;
+    vertical-align: middle;
+}
+.columnMiddle img{
+    max-width:150px;
+    max-height:50px;
+}
+
 .columnRight {
     float: left;
-    width: 40%;
+    width: 20%;
     text-align: left;
     vertical-align: middle;
 }
@@ -190,39 +201,57 @@ a {
 }
 
 .form-wrapper {
-    width: 90%;
-    padding: 15px;
-    margin: 15px auto 15px auto;
+    width: 85%;
+    /*padding: 10px;*/
+    /*margin: 3px;*/
     background: #444;
-    background: rgba(0,0,0,.2);
-    -moz-border-radius: 10px;
+    background: rgba(0,0,0,.01);
+    /*-moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);*/
 }
+.form-wrapper input::before{
+    background-color: rgba(16, 37, 19, 0.96);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
 
 .form-wrapper input {
-    width: 83%;
+    width: 45%;
     height: 20px;
     padding: 10px 1%;
-    float: left;
+    padding-left: 40px;
+    margin-right: 10px;
+    float: right;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
-    background: #eee;
-    -moz-border-radius: 3px 0 0 3px;
+    background-color: white;
+    background-image: url('../images/search-logo.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    /*background:url("../images/search-logo.png") no-repeat left scroll;*/
+    /*-moz-border-radius: 3px 0 0 3px;
     -webkit-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;*/
 }
 
-.form-wrapper input:focus {
+
+/*.form-wrapper input:focus {
     outline: 0;
-    background: #fff;
+    width: 85%;
+   !* background: #fff;
+    background:url("../images/search-logo.png") no-repeat left scroll;
     -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
     -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-}
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;*!
+}*/
 
 .form-wrapper input::-webkit-input-placeholder {
     color: #999;
@@ -240,55 +269,4 @@ a {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}
-
-.form-wrapper button {
-    overflow: visible;
-    position: relative;
-    float: right;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    height: 40px;
-    width: 15%;
-    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    color: #fff;
-    text-transform: uppercase;
-    background: #08570c;
-    -moz-border-radius: 0 3px 3px 0;
-    -webkit-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-}
-
-.form-wrapper button:hover{
-    background: #61e55e;
-}
-
-.form-wrapper button:active,
-.form-wrapper button:focus{
-    background: #102513;
-}
-
-.form-wrapper button:before {
-    content: '';
-    position: absolute;
-    border-width: 8px 8px 8px 0;
-    border-style: solid solid solid none;
-    border-color: transparent #d83c3c transparent;
-    top: 12px;
-    left: -6px;
-}
-
-.form-wrapper button:hover:before{
-    border-right-color: #e54040;
-}
-
-.form-wrapper button:focus:before{
-    border-right-color: #c42f2f;
-}
-
-.form-wrapper button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
 }

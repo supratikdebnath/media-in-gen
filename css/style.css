@@ -97,6 +97,10 @@ min-height: 40px;
     }
 }
 
+img{
+    max-width:150px;
+    max-height:50px;
+}
 
 body {
   background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
@@ -131,7 +135,7 @@ a {
     padding-top: 5px;
     padding-bottom: 10px;
     padding-right:20px;
-    background-color: #6CBF4C;
+    background-color: #0049a0;
 }
 
 .row

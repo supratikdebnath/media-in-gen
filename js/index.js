@@ -179,7 +179,7 @@ function search() {
     }
     $.ajax({
         type : 'POST',
-        url: "https://search-esawskol-p2qmao574p4skf63bo7ssbi66a.us-west-2.es.amazonaws.com/media/_search",
+        url: "https://search-esawskol-p2qmao574p4skf63bo7ssbi66a.us-west-2.es.amazonaws.com/media/_search?size=100",
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function(resultData){

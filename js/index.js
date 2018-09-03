@@ -11,20 +11,27 @@ function CreateHeading(len) {
 }
 
 function Create(name,url,i,resultData,text1) {
-    var v_div = document.createElement("div");
+    var row_master_div = document.createElement("div");
+    row_master_div.classList.add("videoSearch");
+
+    var vid_master_div = document.createElement("div");
+    vid_master_div.classList.add("videoDiv");
+
+    var details_master_div = document.createElement("div");
+    details_master_div.classList.add("videoDetailsDiv");
+
     var v_name = document.createElement("P");
+    var t = document.createTextNode(name+"\n");
+    v_name.appendChild(t);
+    v_name.setAttribute("style","font-weight: bold; font-size: 130%");
+    vid_master_div.appendChild(v_name);
+
     var ifrm = document.createElement("video");
     ifrm.id="iframe"+i;
     ifrm.controls="true";
     ifrm.setAttribute("src",url);
-    ifrm.setAttribute("style","height:280px; width:500px; padding-bottom:10px;}")
-    var t = document.createTextNode(name+"\n");
-    v_name.appendChild(t);
-    v_name.setAttribute("style","font-weight: bold; font-size: 130%");
-    v_div.appendChild(v_name);
-    v_div.appendChild(ifrm);
-
-
+    ifrm.setAttribute("style","height:280px; width:500px; padding-bottom:10px;}");
+    vid_master_div.appendChild(ifrm);
 
     var leftDiv = document.createElement("div");                   //Create left div
     leftDiv.id = "left";                                           //Assign div id
@@ -33,18 +40,20 @@ function Create(name,url,i,resultData,text1) {
     a.innerHTML = "Get Video";                //<a>INNER_TEXT</a>
     leftDiv.appendChild(a);  // Append the link to the div
     // document.body.appendChild(leftDiv);
-    v_div.appendChild(leftDiv);
+
+    vid_master_div.appendChild(leftDiv);
+    row_master_div.appendChild(vid_master_div);
 
     if (null != resultData.hits.hits[i].inner_hits) {
         var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
         leftDiv.setAttribute("style","padding-bottom:10px;");
         var t2 = document.createTextNode(" GO TO TIME :-");
-        v_div.appendChild(t2);
-        v_div.setAttribute("style","font-weight: bold;");
+        row_master_div.appendChild(t2);
+        row_master_div.setAttribute("style","font-weight: bold;");
         var div1= document.createElement("div");
         var sub= document.createElement("p");
         sub.id="sub"+i;
-        v_div.appendChild(sub);
+        row_master_div.appendChild(sub);
         for(var j=0;j<len1;j++)
         {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
@@ -100,9 +109,9 @@ function Create(name,url,i,resultData,text1) {
             t.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
 
             div1.appendChild(t);
-            v_div.appendChild(div1);
+            row_master_div.appendChild(div1);
 
-            document.getElementById("vd").appendChild(v_div);
+            document.getElementById("vd").appendChild(row_master_div);
             // var div2=document.createElement("div");
 
             document.getElementById("sub"+i).setAttribute("style", "color:#747474; font-size: 120%;");

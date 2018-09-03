@@ -270,3 +270,33 @@ a {
     font-weight: normal;
     font-style: italic;
 }
+
+.videoDiv{
+    float: left;
+    width: 50%;
+}
+
+.videoDetailsDiv{
+    float: left;
+    width: 50%;
+}
+
+.videoSearch:before {
+    content: "";
+    display: table;
+    clear: both;
+}
+.videoSearch {
+    display: flex;
+    flex: 50%;
+}
+
+/*.column {
+    flex: 50%;
+}*/
+
+@media screen and (max-width: 600px) {
+    .videoDiv .videoDetailsDiv{
+        width: 100%;
+    }
+}

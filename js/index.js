@@ -2,9 +2,9 @@ function CreateHeading(len) {
     var para = document.createElement("P");
     var t;
     if(len==1)
-        t = document.createTextNode("Search term found in \""+len+"\" video");
+        t = document.createTextNode(len + " video found");
     else
-        t = document.createTextNode("Search term found in \""+len+"\" videos");
+        t = document.createTextNode(len + " videos found");
     // para.setAttribute("style","color:#eff913");
     para.appendChild(t);
     document.getElementById("heading").appendChild(para);
@@ -17,7 +17,7 @@ function Create(name,url,i,resultData,text1) {
     ifrm.controls="true";
     ifrm.setAttribute("src",url);
     ifrm.setAttribute("style","height:280px; width:500px; padding-bottom:10px;}")
-    var t = document.createTextNode(name+"\n");
+    var t = document.createTextNode((i+1) + ". " + name+"\n");
     v_name.appendChild(t);
     v_name.setAttribute("style","font-weight: bold; font-size: 130%");
     document.getElementById("vd").appendChild(v_name);

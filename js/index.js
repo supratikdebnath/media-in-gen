@@ -20,58 +20,56 @@ function Create(name,url,i,resultData,text1) {
     var details_master_div = document.createElement("div");
     details_master_div.classList.add("videoDetailsDiv");
 
-    var v_name = document.createElement("P");
-    var t = document.createTextNode((i+1) + ". " + name+"\n");
-    v_name.appendChild(t);
-    v_name.setAttribute("style","font-weight: bold; font-size: 130%");
-    vid_master_div.appendChild(v_name);
+    var video_name = document.createElement("div");
+    video_name.classList.add("videoname");
+    var video_text = document.createTextNode((i+1) + ". " + name+"\n");
+    video_name.appendChild(video_text);
 
-    var ifrm = document.createElement("video");
-    ifrm.id="iframe"+i;
-    ifrm.controls="true";
-    ifrm.setAttribute("src",url);
-    ifrm.setAttribute("style","height:280px; width:500px; padding-bottom:10px;}");
-    vid_master_div.appendChild(ifrm);
+    vid_master_div.appendChild(video_name);
 
-    var leftDiv = document.createElement("div");                   //Create left div
-    leftDiv.id = "left";                                           //Assign div id
-    a = document.createElement('a');
-    a.href = url;
-    a.innerHTML = "Get Video";                //<a>INNER_TEXT</a>
-    leftDiv.appendChild(a);  // Append the link to the div
-    // document.body.appendChild(leftDiv);
+    var video_frame = document.createElement("video");
+    video_frame.id="videoFrame"+i;
+    video_frame.controls="true";
+    video_frame.setAttribute("src",url);
+    vid_master_div.appendChild(video_frame);
 
-    vid_master_div.appendChild(leftDiv);
+    var btnHolderDiv = document.createElement("div");
+    btnHolderDiv.id = "HolderDiv";
+    var dnld_btn = document.createElement('button');
+    dnld_btn.classList.add("btn");
+    var element_i = document.createElement('i');
+    element_i.classList.add("fa","fa-download");
+    dnld_btn.appendChild(element_i);
+
+    dnld_btn.href = url;
+    var dnld_text = document.createTextNode("Download");
+    dnld_btn.appendChild(dnld_text);
+
+    btnHolderDiv.appendChild(dnld_btn);
+
+    vid_master_div.appendChild(btnHolderDiv);
     row_master_div.appendChild(vid_master_div);
 
     if (null != resultData.hits.hits[i].inner_hits) {
         var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
-        leftDiv.setAttribute("style","padding-bottom:10px;");
-        var t2 = document.createTextNode(" GO TO TIME :-");
-        row_master_div.appendChild(t2);
-        row_master_div.setAttribute("style","font-weight: bold;");
+
+        details_master_div.setAttribute("style","font-weight: bold;");
         var div1= document.createElement("div");
         var sub= document.createElement("p");
         sub.id="sub"+i;
-        row_master_div.appendChild(sub);
+        details_master_div.appendChild(sub);
         for(var j=0;j<len1;j++)
         {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
-            var t = document.createElement("button");                         //Create button
-            var sec=lines._source.time;
-            var min=0;
-            if(sec>=60){
-                min=sec/60;
-                sec=sec%60;
-            }
-            if(sec<=9)
-                sec='0'+sec;
-            var time=Math.floor(min)+":"+ parseInt(sec, 10);
-            var t1 = document.createTextNode(time);       // Create a text node
-            t.setAttribute('data',time+" - "+lines._source.word);
-            t.id = i+"####"+lines._source.time;
-            t.appendChild(t1);
-            t.addEventListener('click', function() {
+
+            var timeButton = document.createElement("button");
+
+            var timeString = getTimeString(lines._source.time);
+            var t1 = document.createTextNode(timeString);       // Create a text node
+            timeButton.setAttribute('data',timeString+" - "+lines._source.word);
+            timeButton.id = i+"####"+lines._source.time;
+            timeButton.appendChild(t1);
+            timeButton.addEventListener('click', function() {
                 var v=this.id;
                 var l=v.length;
                 var frame_number="";
@@ -88,7 +86,7 @@ function Create(name,url,i,resultData,text1) {
                     if(ch!='#' && f==1)
                         time+=ch;
                 }
-                document.getElementById("iframe"+frame_number).currentTime = time;
+                video_frame.currentTime = time;
 
                 var data1=this.getAttribute('data');
                 var text2=text1;
@@ -101,15 +99,16 @@ function Create(name,url,i,resultData,text1) {
                 data1=data1.replace(time1,time2);
                 var text = document.createElement("p");
                 text.innerHTML = data1;
-                document.getElementById("iframe"+frame_number).play();
+                document.getElementById("videoFrame"+frame_number).play();
                 var t2 = document.createTextNode(text);
                 document.getElementById("sub"+frame_number).innerHTML= "";
                 document.getElementById("sub"+frame_number).appendChild(text);
             }, false);
-            t.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
+            timeButton.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
 
-            div1.appendChild(t);
-            row_master_div.appendChild(div1);
+            div1.appendChild(timeButton);
+            details_master_div.appendChild(div1);
+            row_master_div.appendChild(details_master_div);
 
             document.getElementById("vd").appendChild(row_master_div);
             // var div2=document.createElement("div");

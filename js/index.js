@@ -11,6 +11,7 @@ function CreateHeading(len) {
 }
 
 function Create(name,url,i,resultData,text1) {
+    var v_div = document.createElement("div");
     var v_name = document.createElement("P");
     var ifrm = document.createElement("video");
     ifrm.id="iframe"+i;
@@ -20,8 +21,9 @@ function Create(name,url,i,resultData,text1) {
     var t = document.createTextNode(name+"\n");
     v_name.appendChild(t);
     v_name.setAttribute("style","font-weight: bold; font-size: 130%");
-    document.getElementById("vd").appendChild(v_name);
-    document.getElementById("vd").appendChild(ifrm);
+    v_div.appendChild(v_name);
+    v_div.appendChild(ifrm);
+
 
 
     var leftDiv = document.createElement("div");                   //Create left div
@@ -30,19 +32,19 @@ function Create(name,url,i,resultData,text1) {
     a.href = url;
     a.innerHTML = "Get Video";                //<a>INNER_TEXT</a>
     leftDiv.appendChild(a);  // Append the link to the div
-    document.body.appendChild(leftDiv);
-    document.getElementById("vd").appendChild(leftDiv);
+    // document.body.appendChild(leftDiv);
+    v_div.appendChild(leftDiv);
 
     if (null != resultData.hits.hits[i].inner_hits) {
         var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
         leftDiv.setAttribute("style","padding-bottom:10px;");
         var t2 = document.createTextNode(" GO TO TIME :-");
-        document.getElementById("vd").appendChild(t2);
-        document.getElementById("vd").setAttribute("style","font-weight: bold;");
+        v_div.appendChild(t2);
+        v_div.setAttribute("style","font-weight: bold;");
         var div1= document.createElement("div");
         var sub= document.createElement("p");
         sub.id="sub"+i;
-        document.getElementById("vd").appendChild(sub);
+        v_div.appendChild(sub);
         for(var j=0;j<len1;j++)
         {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
@@ -98,8 +100,10 @@ function Create(name,url,i,resultData,text1) {
             t.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
 
             div1.appendChild(t);
-            document.getElementById("vd").appendChild(div1);
-            var div2=document.createElement("div");
+            v_div.appendChild(div1);
+
+            document.getElementById("vd").appendChild(v_div);
+            // var div2=document.createElement("div");
 
             document.getElementById("sub"+i).setAttribute("style", "color:#747474; font-size: 120%;");
         }

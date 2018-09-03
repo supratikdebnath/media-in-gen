@@ -56,10 +56,10 @@ function Create(name,url,i,resultData,text1) {
         details_master_div.setAttribute("style","font-weight: bold;");
 
         var timeButtonHolder= document.createElement("div");
-        timeButtonHolder.classList.add("border-top","timeButtonHolder");
+        timeButtonHolder.classList.add("timeButtonHolder");
 
         var sub= document.createElement("p");
-        sub.classList.add("subtitle");
+        sub.classList.add("subtitle","border-top");
         sub.id="sub"+i;
         details_master_div.appendChild(sub);
         for(var j=0;j<len1;j++)

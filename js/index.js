@@ -35,17 +35,17 @@ function Create(name,url,i,resultData,text1) {
 
     var btnHolderDiv = document.createElement("div");
     btnHolderDiv.id = "HolderDiv";
+    var dnld_anchor = document.createElement('a');
+    dnld_anchor.href = url;
     var dnld_btn = document.createElement('button');
     dnld_btn.classList.add("btn");
     var element_i = document.createElement('i');
     element_i.classList.add("fa","fa-download");
     dnld_btn.appendChild(element_i);
-
-    dnld_btn.href = url;
     var dnld_text = document.createTextNode("Download");
     dnld_btn.appendChild(dnld_text);
-
-    btnHolderDiv.appendChild(dnld_btn);
+    dnld_anchor.appendChild(dnld_btn);
+    btnHolderDiv.appendChild(dnld_anchor);
 
     vid_master_div.appendChild(btnHolderDiv);
     row_master_div.appendChild(vid_master_div);
@@ -54,8 +54,12 @@ function Create(name,url,i,resultData,text1) {
         var len1=resultData.hits.hits[i].inner_hits.subtitle.hits.hits.length;
 
         details_master_div.setAttribute("style","font-weight: bold;");
-        var div1= document.createElement("div");
+
+        var timeButtonHolder= document.createElement("div");
+        timeButtonHolder.classList.add("border-top","timeButtonHolder");
+
         var sub= document.createElement("p");
+        sub.classList.add("subtitle");
         sub.id="sub"+i;
         details_master_div.appendChild(sub);
         for(var j=0;j<len1;j++)
@@ -63,6 +67,7 @@ function Create(name,url,i,resultData,text1) {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
 
             var timeButton = document.createElement("button");
+            timeButton.classList.add("timeButton","orange","btn");
 
             var timeString = getTimeString(lines._source.time);
             var t1 = document.createTextNode(timeString);       // Create a text node
@@ -104,10 +109,9 @@ function Create(name,url,i,resultData,text1) {
                 document.getElementById("sub"+frame_number).innerHTML= "";
                 document.getElementById("sub"+frame_number).appendChild(text);
             }, false);
-            timeButton.setAttribute("style","margin-right:20px; background: #ddd;  width:40px; height:30px; margin-bottom:20px;");
 
-            div1.appendChild(timeButton);
-            details_master_div.appendChild(div1);
+            timeButtonHolder.appendChild(timeButton);
+            details_master_div.appendChild(timeButtonHolder);
             row_master_div.appendChild(details_master_div);
 
             document.getElementById("vd").appendChild(row_master_div);

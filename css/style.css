@@ -58,7 +58,7 @@ min-height: 40px;
   border: none;
 }
 
-.topnav .search-container button {
+.topnav .search-container {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
@@ -275,7 +275,8 @@ video {
 }
 
 .videoDetailsDiv{
-    float: left;
+    position: relative;
+    float: right;
     width: 50%;
 }
 
@@ -296,13 +297,20 @@ video {
     }
 }
 
+.timeDiv{
+    float: bottom;
+    width: 40%;
+}
 
-
+.transcriptDiv{
+    float: top;
+    width: 60%;
+}
 /*---------------------------------*/
 
 
 .btn {
-    margin: .2em auto;
+    /*margin: .2em auto;*/
     padding: 12px 30px;
 
     overflow: hidden;
@@ -387,4 +395,39 @@ video {
 
 .fa{
     padding-right: 7px;
+}
+
+.timeButton{
+    margin: unset;
+    margin-right:10px;
+    margin-bottom:10px;
+    width:10%;
+    padding: 10px 10px;!important;
+}
+
+.timeButtonHolder{
+    position: absolute;
+    bottom: 0px;
+    height:33%;
+    width: 100%;
+    margin: auto;
+    padding-top: 1em;
+}
+
+.subtitle{
+    position: absolute;
+    top: 0px;
+    height:67%;
+    margin: auto;
+}
+
+
+/*----------------*/
+
+.border-top{
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.border-bottom{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }

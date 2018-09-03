@@ -35,17 +35,17 @@ function Create(name,url,i,resultData,text1) {
 
     var btnHolderDiv = document.createElement("div");
     btnHolderDiv.id = "HolderDiv";
+    var dnld_anchor = document.createElement('a');
+    dnld_anchor.href = url;
     var dnld_btn = document.createElement('button');
     dnld_btn.classList.add("btn");
     var element_i = document.createElement('i');
     element_i.classList.add("fa","fa-download");
     dnld_btn.appendChild(element_i);
-
-    dnld_btn.href = url;
     var dnld_text = document.createTextNode("Download");
     dnld_btn.appendChild(dnld_text);
-
-    btnHolderDiv.appendChild(dnld_btn);
+    dnld_anchor.appendChild(dnld_btn);
+    btnHolderDiv.appendChild(dnld_anchor);
 
     vid_master_div.appendChild(btnHolderDiv);
     row_master_div.appendChild(vid_master_div);

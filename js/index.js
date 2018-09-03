@@ -2,9 +2,9 @@ function CreateHeading(len) {
     var para = document.createElement("P");
     var t;
     if(len==1)
-        t = document.createTextNode("Search term found in \""+len+"\" video");
+        t = document.createTextNode(len + " video found");
     else
-        t = document.createTextNode("Search term found in \""+len+"\" videos");
+        t = document.createTextNode(len + " videos found");
     // para.setAttribute("style","color:#eff913");
     para.appendChild(t);
     document.getElementById("heading").appendChild(para);

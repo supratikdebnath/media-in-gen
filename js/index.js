@@ -117,10 +117,11 @@ function Create(name,url,i,resultData,text1) {
             row_master_div.appendChild(details_master_div);
 
             document.getElementById("vd").appendChild(row_master_div);
-            // var div2=document.createElement("div");
 
             document.getElementById("sub"+i).setAttribute("style", "color:#747474; font-size: 120%;");
         }
+    } else {
+        document.getElementById("vd").appendChild(row_master_div);
     }
 }
 

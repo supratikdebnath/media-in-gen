@@ -1,11 +1,13 @@
 function CreateHeading(len) {
     var para = document.createElement("P");
+    para.classList.add("countToolbar", "border-bottom", "countText");
     var t;
-    if(len==1)
-        t = document.createTextNode(len+" video found");
+    if (len ==0)
+        t = document.createTextNode("No video found");
+    else if(len==1)
+        t = document.createTextNode(len+" Video found");
     else
-        t = document.createTextNode(len+" videos found");
-    // para.setAttribute("style","color:#eff913");
+        t = document.createTextNode(len+" Videos found");
     para.appendChild(t);
     document.getElementById("heading").appendChild(para);
 }
@@ -56,12 +58,13 @@ function Create(name,url,i,resultData,text1) {
         details_master_div.setAttribute("style","font-weight: bold;");
 
         var timeButtonHolder= document.createElement("div");
-        timeButtonHolder.classList.add("timeButtonHolder");
+        timeButtonHolder.classList.add("timeButtonHolder","border-bottom");
 
         var sub= document.createElement("p");
-        sub.classList.add("subtitle","border-top");
+        sub.classList.add("subtitle");
         sub.id="sub"+i;
         details_master_div.appendChild(sub);
+
         for(var j=0;j<len1;j++)
         {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
@@ -103,6 +106,7 @@ function Create(name,url,i,resultData,text1) {
                 data1=data1.replace(re,text2);
                 data1=data1.replace(time1,time2);
                 var text = document.createElement("p");
+                text.classList.add("subtitletext");
                 text.innerHTML = data1;
                 document.getElementById("videoFrame"+frame_number).play();
                 var t2 = document.createTextNode(text);
@@ -124,37 +128,11 @@ function Create(name,url,i,resultData,text1) {
 }
 
 function dispResult(a,b,resultData,text) {
-    var c;
-    if(a>=b){
-        document.getElementById("more").innerHTML = "";
-        return;
-    }
-    if(b-a<=2)
-    {
-        for(var i=a;i<b;i++){
-            var name=resultData.hits.hits[i]._source.name;
-            var url=resultData.hits.hits[i]._source.url;
-            Create(name,url,i,resultData,text);
-        }
-        document.getElementById("more").innerHTML = "";
-        // dispResult(a,b,resultData);
-    }
-    if(b-a>2){
-        document.getElementById("more").innerHTML = "";
-        for(var i=a;i<a+2;i++){
-            var name=resultData.hits.hits[i]._source.name;
-            var url=resultData.hits.hits[i]._source.url;
-            Create(name,url,i,resultData,text);
-        }
-        a=a+2;
-        var btn = document.createElement("BUTTON");        // Create a <button> element
-        var t = document.createTextNode("Load More");      // Create a text node
-        btn.appendChild(t);                                // Append the text to <button>
-        btn.setAttribute("style"," width:600px;height:50px;background:#ddd;margin-bottom:20px;");
-        document.getElementById("more").appendChild(btn);
-        btn.addEventListener('click', function() {
-            dispResult(a,b,resultData,text);
-        }, false);
+
+    for(var i=a;i<b;i++){
+        var name=resultData.hits.hits[i]._source.name;
+        var url=resultData.hits.hits[i]._source.url;
+        Create(name,url,i,resultData,text);
     }
 }
 
@@ -176,7 +154,7 @@ function search() {
                     }
                 },
                 "inner_hits": {
-                    "size": 15,
+                    "size": 59,
                     "highlight": {
                         "fields": {
                             "subtitle.time": {}

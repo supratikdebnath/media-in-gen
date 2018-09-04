@@ -127,10 +127,7 @@ a {
 /*-------------------------------------*/
 
 .headerDiv{
-    padding-left:20px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    padding-right:20px;
+    padding: 5px 20px 10px;
     background-color: #0f4b9e;
 }
 
@@ -268,10 +265,12 @@ video {
     padding-bottom: .5em;
     padding-left: 1em;
     float: left;
+    text-shadow: 1px 1px #acacac;
 }
 .videoDiv{
     float: left;
     width: 50%;
+    padding-left: 3em;
 }
 
 .videoDetailsDiv{
@@ -397,6 +396,31 @@ video {
     padding-right: 7px;
 }
 
+.countToolbar{
+    height: 64px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    background: whitesmoke;
+    color: rgba(0, 0, 0, 0.87);
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    padding-left: 2em;
+}
+
+.countText{
+    font-weight: bold;
+    text-shadow: 1px 1px gray;
+}
+
+.countDigit{
+    font-style:italic;
+    color:gray;
+}
+
 .timeButton{
     margin: unset;
     margin-right:10px;
@@ -408,19 +432,34 @@ video {
 .timeButtonHolder{
     position: absolute;
     top: 0px;
-    padding-top: 1em;
-    height:33%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    max-height:33%;
+    flex: fit-content;
+    overflow-scrolling: auto;
     width: 100%;
     margin: auto;
+    float: bottom;
+    vertical-align: bottom;
+    justify-content: flex-end;
 }
 
 .subtitle{
     position: absolute;
-    padding-top: 1em;
-    bottom: 0px;
-    height:67%;
+    padding-top: .5em;
+    bottom: 0;
+    height:60%;
+    flex: border-box;
+    overflow-scrolling: auto;
     width: 100%;
     margin: auto;
+    vertical-align: middle;
+    float: end;
+}
+
+.subtitletext{
+    overflow-y: auto;
+    height: 95%;
 }
 
 

@@ -67,7 +67,10 @@ function Create(name,url,i,resultData,text1) {
 
         for(var j=0;j<len1;j++)
         {
-            var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
+            var hits = resultData.hits.hits[i].inner_hits.subtitle.hits.hits;
+            hits = hits.sort(compare);
+
+            var lines = hits[j];
 
             var timeButton = document.createElement("button");
             timeButton.classList.add("timeButton","orange","btn");
@@ -159,8 +162,7 @@ function search() {
                         "fields": {
                             "subtitle.time": {}
                         }
-                    },
-                    "sort": {"subtitle.time" :{"order" :"asc"}}
+                    }
                 }
             }
         }

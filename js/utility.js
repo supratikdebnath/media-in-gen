@@ -9,3 +9,17 @@ function getTimeString(sec) {
     var time=Math.floor(min)+":"+ parseInt(sec, 10);
     return time;
 }
+
+function compare(a, b) {
+  try {
+	  var aVal = parseFloat(a._source.time);
+	  var bVal = parseFloat(b._source.time);
+	  if (aVal < bVal)
+	     return -1;
+	  if (aVal > bVal)
+	    return 1;
+  } catch (e) {
+      console.log("Parse Error: " + e);
+  }
+  return 0;
+}

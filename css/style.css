@@ -397,6 +397,19 @@ video {
     padding-right: 7px;
 }
 
+.countToolbar{
+    height: 64px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    background: whitesmoke;
+    color: rgba(0, 0, 0, 0.87);
+}
+
 .timeButton{
     margin: unset;
     margin-right:10px;
@@ -408,19 +421,29 @@ video {
 .timeButtonHolder{
     position: absolute;
     top: 0px;
-    padding-top: 1em;
-    height:33%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    max-height:33%;
+    flex: fit-content;
+    overflow-scrolling: auto;
     width: 100%;
     margin: auto;
+    float: bottom;
+    vertical-align: bottom;
+    justify-content: flex-end;
 }
 
 .subtitle{
     position: absolute;
-    padding-top: 1em;
-    bottom: 0px;
-    height:67%;
+    padding-top: .5em;
+    bottom: 0;
+    height:60%;
+    flex: border-box;
+    overflow-scrolling: auto;
     width: 100%;
     margin: auto;
+    vertical-align: middle;
+    float: end;
 }
 
 

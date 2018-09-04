@@ -1,5 +1,6 @@
 function CreateHeading(len) {
     var para = document.createElement("P");
+    para.classList.add("countToolbar", "border-bottom");
     var t;
     if(len==1)
         t = document.createTextNode(len+" video found");
@@ -56,12 +57,13 @@ function Create(name,url,i,resultData,text1) {
         details_master_div.setAttribute("style","font-weight: bold;");
 
         var timeButtonHolder= document.createElement("div");
-        timeButtonHolder.classList.add("timeButtonHolder");
+        timeButtonHolder.classList.add("timeButtonHolder","border-bottom");
 
         var sub= document.createElement("p");
-        sub.classList.add("subtitle","border-top");
+        sub.classList.add("subtitle");
         sub.id="sub"+i;
         details_master_div.appendChild(sub);
+
         for(var j=0;j<len1;j++)
         {
             var lines=resultData.hits.hits[i].inner_hits.subtitle.hits.hits[j];
@@ -123,7 +125,13 @@ function Create(name,url,i,resultData,text1) {
 }
 
 function dispResult(a,b,resultData,text) {
-    var c;
+
+    for(var i=a;i<b;i++){
+        var name=resultData.hits.hits[i]._source.name;
+        var url=resultData.hits.hits[i]._source.url;
+        Create(name,url,i,resultData,text);
+    }
+    /*var c;
     if(a>=b){
         document.getElementById("more").innerHTML = "";
         return;
@@ -154,7 +162,7 @@ function dispResult(a,b,resultData,text) {
         btn.addEventListener('click', function() {
             dispResult(a,b,resultData,text);
         }, false);
-    }
+    }*/
 }
 
 function search() {

@@ -99,10 +99,11 @@ min-height: 40px;
 
 body {
   /*background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);*/
-  font: 13px 'Lucida sans', Arial, Helvetica;
-  color: black;
-  text-align: center;
+    font: 13px 'Lucida sans', Arial, Helvetica;
+    color: black;
+    text-align: center;
     background-color: #f5f5f5;
+    overflow-x: hidden
 }
 
 a {
@@ -128,7 +129,7 @@ a {
 
 .headerDiv{
     padding: 5px 20px 10px;
-    background-color: #0f4b9e;
+    background-color: #0049a0;
 }
 
 .row
@@ -259,6 +260,11 @@ video {
     padding-bottom:10px
 }
 
+tr:nth-child(odd) {background: rgba(245, 245, 245, 1)
+}
+tr:nth-child(even) {background: rgba(24, 76, 154, 0.05)
+}
+
 .videoname{
     font-weight: bold;
     font-size: large;
@@ -277,6 +283,7 @@ video {
     position: relative;
     float: right;
     width: 50%;
+    padding-right: 1em;
 }
 
 .videoSearch:before {
@@ -287,11 +294,15 @@ video {
 .videoSearch {
     display: flex;
     flex: 50%;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
+    padding-top: 1em;
 }
 
 @media screen and (max-width: 200px) {
-    .videoDiv .videoDetailsDiv{
+    .videoDiv{
+        width: 100%;
+    }
+    .videoDetailsDiv{
         width: 100%;
     }
 }
@@ -320,7 +331,7 @@ video {
     border-radius: 2px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 
-    background-color: DodgerBlue;
+    background-color: #0b78d1;
     color: #ecf0f1;
 
     cursor: pointer;
@@ -330,7 +341,7 @@ video {
 }
 
 .btn:hover, .btn:focus {
-    background-color: RoyalBlue;
+    background-color: #0049a0;
 }
 
 .btn > * {
@@ -384,6 +395,14 @@ video {
     background-color: #d35400;
 }
 
+.btn.green {
+    background-color: #74be50;
+}
+
+.btn.green:hover, .btn.green:focus {
+    background-color: #4d994d;
+}
+
 .btn.red {
     background-color: #e74c3c;
 }
@@ -409,6 +428,7 @@ video {
     color: rgba(0, 0, 0, 0.87);
     font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
     padding-left: 2em;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .countText{
@@ -445,6 +465,7 @@ video {
 .subtitle{
     position: absolute;
     padding-top: 2em;
+    padding-right: 1em;
     bottom: 0;
     height:60%;
     flex: border-box;
@@ -460,6 +481,7 @@ video {
     height: 90%;
     padding-top: .7em;
     padding-bottom: .7em;
+    padding-right: 1em;
 }
 
 

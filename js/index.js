@@ -13,7 +13,7 @@ function CreateHeading(len) {
 }
 
 function Create(name,url,i,resultData,text1) {
-    var row_master_div = document.createElement("div");
+    var row_master_div = document.createElement("tr");
     row_master_div.classList.add("videoSearch");
 
     var vid_master_div = document.createElement("div");
@@ -40,7 +40,7 @@ function Create(name,url,i,resultData,text1) {
     var dnld_anchor = document.createElement('a');
     dnld_anchor.href = url;
     var dnld_btn = document.createElement('button');
-    dnld_btn.classList.add("btn");
+    dnld_btn.classList.add("btn","green");
     var element_i = document.createElement('i');
     element_i.classList.add("fa","fa-download");
     dnld_btn.appendChild(element_i);
@@ -73,7 +73,7 @@ function Create(name,url,i,resultData,text1) {
             var lines = hits[j];
 
             var timeButton = document.createElement("button");
-            timeButton.classList.add("timeButton","orange","btn");
+            timeButton.classList.add("timeButton","btn","green");
 
             var timeString = getTimeString(lines._source.time);
             var t1 = document.createTextNode(timeString);       // Create a text node
@@ -157,7 +157,7 @@ function search() {
                     }
                 },
                 "inner_hits": {
-                    "size": 59,
+                    "size": 99,
                     "highlight": {
                         "fields": {
                             "subtitle.time": {}

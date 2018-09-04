@@ -127,10 +127,7 @@ a {
 /*-------------------------------------*/
 
 .headerDiv{
-    padding-left:20px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    padding-right:20px;
+    padding: 5px 20px 10px;
     background-color: #0f4b9e;
 }
 
@@ -268,10 +265,12 @@ video {
     padding-bottom: .5em;
     padding-left: 1em;
     float: left;
+    text-shadow: 1px 1px #acacac;
 }
 .videoDiv{
     float: left;
     width: 50%;
+    padding-left: 3em;
 }
 
 .videoDetailsDiv{
@@ -408,6 +407,18 @@ video {
     white-space: nowrap;
     background: whitesmoke;
     color: rgba(0, 0, 0, 0.87);
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    padding-left: 2em;
+}
+
+.countText{
+    font-weight: bold;
+    text-shadow: 1px 1px gray;
+}
+
+.countDigit{
+    font-style:italic;
+    color:gray;
 }
 
 .timeButton{

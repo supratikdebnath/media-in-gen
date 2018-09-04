@@ -1,12 +1,13 @@
 function CreateHeading(len) {
     var para = document.createElement("P");
-    para.classList.add("countToolbar", "border-bottom");
+    para.classList.add("countToolbar", "border-bottom", "countText");
     var t;
-    if(len==1)
-        t = document.createTextNode(len+" video found");
+    if (len ==0)
+        t = document.createTextNode("No video found");
+    else if(len==1)
+        t = document.createTextNode(len+" Video found");
     else
-        t = document.createTextNode(len+" videos found");
-    // para.setAttribute("style","color:#eff913");
+        t = document.createTextNode(len+" Videos found");
     para.appendChild(t);
     document.getElementById("heading").appendChild(para);
 }
@@ -132,38 +133,6 @@ function dispResult(a,b,resultData,text) {
         var url=resultData.hits.hits[i]._source.url;
         Create(name,url,i,resultData,text);
     }
-    /*var c;
-    if(a>=b){
-        document.getElementById("more").innerHTML = "";
-        return;
-    }
-    if(b-a<=2)
-    {
-        for(var i=a;i<b;i++){
-            var name=resultData.hits.hits[i]._source.name;
-            var url=resultData.hits.hits[i]._source.url;
-            Create(name,url,i,resultData,text);
-        }
-        document.getElementById("more").innerHTML = "";
-        // dispResult(a,b,resultData);
-    }
-    if(b-a>2){
-        document.getElementById("more").innerHTML = "";
-        for(var i=a;i<a+2;i++){
-            var name=resultData.hits.hits[i]._source.name;
-            var url=resultData.hits.hits[i]._source.url;
-            Create(name,url,i,resultData,text);
-        }
-        a=a+2;
-        var btn = document.createElement("BUTTON");        // Create a <button> element
-        var t = document.createTextNode("Load More");      // Create a text node
-        btn.appendChild(t);                                // Append the text to <button>
-        btn.setAttribute("style"," width:600px;height:50px;background:#ddd;margin-bottom:20px;");
-        document.getElementById("more").appendChild(btn);
-        btn.addEventListener('click', function() {
-            dispResult(a,b,resultData,text);
-        }, false);
-    }*/
 }
 
 function search() {

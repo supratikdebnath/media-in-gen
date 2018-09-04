@@ -432,21 +432,19 @@ video {
 .timeButtonHolder{
     position: absolute;
     top: 0px;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    max-height:33%;
+    max-height:34%;
     flex: fit-content;
-    overflow-scrolling: auto;
     width: 100%;
     margin: auto;
     float: bottom;
     vertical-align: bottom;
     justify-content: flex-end;
+    overflow-y: auto;
 }
 
 .subtitle{
     position: absolute;
-    padding-top: .5em;
+    padding-top: 2em;
     bottom: 0;
     height:60%;
     flex: border-box;
@@ -459,7 +457,9 @@ video {
 
 .subtitletext{
     overflow-y: auto;
-    height: 95%;
+    height: 90%;
+    padding-top: .7em;
+    padding-bottom: .7em;
 }
 
 

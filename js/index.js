@@ -106,6 +106,7 @@ function Create(name,url,i,resultData,text1) {
                 data1=data1.replace(re,text2);
                 data1=data1.replace(time1,time2);
                 var text = document.createElement("p");
+                text.classList.add("subtitletext");
                 text.innerHTML = data1;
                 document.getElementById("videoFrame"+frame_number).play();
                 var t2 = document.createTextNode(text);
@@ -153,7 +154,7 @@ function search() {
                     }
                 },
                 "inner_hits": {
-                    "size": 15,
+                    "size": 59,
                     "highlight": {
                         "fields": {
                             "subtitle.time": {}

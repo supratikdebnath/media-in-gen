@@ -457,6 +457,11 @@ video {
     float: end;
 }
 
+.subtitletext{
+    overflow-y: auto;
+    height: 95%;
+}
+
 
 /*----------------*/
 

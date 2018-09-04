@@ -275,7 +275,7 @@ tr:nth-child(even) {background: rgba(24, 76, 154, 0.05)
     padding-bottom: .5em;
     padding-left: 1em;
     float: left;
-    text-shadow: 1px 1px #acacac;
+    /*text-shadow: 1px 1px #acacac;*/
 }
 .videoDiv{
     float: left;
@@ -437,7 +437,7 @@ tr:nth-child(even) {background: rgba(24, 76, 154, 0.05)
 
 .countText{
     font-weight: bold;
-    text-shadow: 1px 1px gray;
+    /*text-shadow: 1px 1px gray;*/
 }
 
 .countDigit{

@@ -488,6 +488,9 @@ tr:nth-child(even) {background: rgba(24, 76, 154, 0.05)
     padding-right: 1em;
 }
 
+.resultTable {
+  display: block;
+}
 
 /*----------------*/
 
